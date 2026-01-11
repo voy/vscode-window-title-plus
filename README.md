@@ -1,4 +1,4 @@
-# Worktree Window Title
+# Git Worktree Window Title
 
 A VS Code extension to show the current git worktree in the window title. Useful when working with multiple worktrees of the same repository.
 
