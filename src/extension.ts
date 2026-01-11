@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 const log = (message: string) => output.appendLine(message);
 import { execSync } from "child_process";
-import * as path from "path";
+import { basename } from "path";
 
 const prefix = "vscode-worktree-window-title:";
 const output = vscode.window.createOutputChannel("Worktree Window Title");
@@ -37,7 +37,7 @@ const keys = {
     const worktreeDir = getWorktreeDir();
     if (!worktreeDir) return undefined;
     const worktreePath = getWorktreePath(worktreeDir);
-    return worktreePath ? path.basename(worktreePath) : undefined;
+    return worktreePath ? basename(worktreePath) : undefined;
   },
   worktreePath: () => {
     const worktreeDir = getWorktreeDir();
