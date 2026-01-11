@@ -6,10 +6,10 @@ A VS Code extension to show the current git worktree in the window title. Useful
 
 This extension provides two variables for use in your `window.title` setting:
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `${worktreeName}` | The folder name of the git worktree | `my-feature-worktree` |
-| `${worktreePath}` | The full path to the git worktree | `/Users/you/projects/my-feature-worktree` |
+| Variable          | Description                         | Example                                   |
+| ----------------- | ----------------------------------- | ----------------------------------------- |
+| `${worktreeName}` | The folder name of the git worktree | `my-feature-worktree`                     |
+| `${worktreePath}` | The full path to the git worktree   | `/Users/you/projects/my-feature-worktree` |
 
 ## Usage
 

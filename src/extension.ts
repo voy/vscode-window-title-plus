@@ -1,23 +1,23 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 const log = (message: string) => output.appendLine(message);
-import { execSync } from 'child_process';
-import * as path from 'path';
+import { execSync } from "child_process";
+import * as path from "path";
 
 const prefix = "vscode-worktree-window-title:";
 const output = vscode.window.createOutputChannel("Worktree Window Title");
 
 function getWorktreePath(workingDir: string): string | undefined {
-    try {
-        const result = execSync('git rev-parse --show-toplevel', {
-            cwd: workingDir,
-            encoding: 'utf8',
-        }).trim();
-        log(`getWorktreePath: workingDir="${workingDir}" result="${result}"`);
-        return result;
-    } catch (e) {
-        log(`getWorktreePath: workingDir="${workingDir}" error="${e}"`);
-        return undefined;
-    }
+  try {
+    const result = execSync("git rev-parse --show-toplevel", {
+      cwd: workingDir,
+      encoding: "utf8",
+    }).trim();
+    log(`getWorktreePath: workingDir="${workingDir}" result="${result}"`);
+    return result;
+  } catch (e) {
+    log(`getWorktreePath: workingDir="${workingDir}" error="${e}"`);
+    return undefined;
+  }
 }
 
 function getWorktreeDir(): string | undefined {
@@ -51,12 +51,8 @@ const updateValues = async () =>
     Object.entries(keys).map(([key, get]) => {
       const value = get();
       log(`${prefix} ${key}: ${value}`);
-      return vscode.commands.executeCommand(
-        "setContext",
-        `${prefix}${key}`,
-        value,
-      );
-    }),
+      return vscode.commands.executeCommand("setContext", `${prefix}${key}`, value);
+    })
   );
 
 export const activate = async (context: vscode.ExtensionContext) => {
@@ -65,12 +61,8 @@ export const activate = async (context: vscode.ExtensionContext) => {
 
   await Promise.all(
     Object.keys(keys).map((key) =>
-      vscode.commands.executeCommand(
-        "registerWindowTitleVariable",
-        key,
-        `${prefix}${key}`,
-      ),
-    ),
+      vscode.commands.executeCommand("registerWindowTitleVariable", key, `${prefix}${key}`)
+    )
   );
 
   context.subscriptions.push(
@@ -81,7 +73,7 @@ export const activate = async (context: vscode.ExtensionContext) => {
         const title = vscode.workspace.getConfiguration("window").get<string>("title");
         log(`${prefix} window.title changed: ${title}`);
       }
-    }),
+    })
   );
 };
 
@@ -89,11 +81,7 @@ export const deactivate = async () => {
   log(`${prefix} deactivated`);
   await Promise.all(
     Object.keys(keys).map((key) =>
-      vscode.commands.executeCommand(
-        "setContext",
-        `${prefix}${key}`,
-        undefined,
-      ),
-    ),
+      vscode.commands.executeCommand("setContext", `${prefix}${key}`, undefined)
+    )
   );
-}
+};
