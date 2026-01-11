@@ -1,0 +1,23 @@
+# Build output
+out/
+dist/
+
+# Dependencies
+node_modules/
+
+# VS Code extension package
+*.vsix
+
+# TypeScript cache
+*.tsbuildinfo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
