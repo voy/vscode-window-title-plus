@@ -1,0 +1,31 @@
+# Source files (compiled output is in out/)
+src/
+*.ts
+tsconfig.json
+
+# Development configuration
+.vscode/
+.github/
+
+# Dependencies (bundled at package time)
+node_modules/
+
+# Git
+.git/
+.gitignore
+
+# Build artifacts not needed in extension
+*.vsix
+*.tsbuildinfo
+
+# Documentation (keep README.md for marketplace)
+CHANGELOG.md
+CONTRIBUTING.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
