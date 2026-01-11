@@ -1,0 +1,44 @@
+{
+  "name": "vscode-worktree-window-title",
+  "displayName": "Worktree Window Title",
+  "description": "Show the git worktree folder name in your VS Code window title",
+  "version": "1.0.0",
+  "publisher": "garytyler",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garytyler/vscode-worktree-window-title"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Worktree Title",
+      "properties": {
+        "worktreeTitle.template": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Window title template. Use `${worktreeName}` for the worktree folder name. Standard VS Code variables like `${dirty}`, `${activeEditorShort}`, `${separator}` also work. **This replaces `window.title` when set.**\n\nExample: `${worktreeName}${separator}${dirty}${activeEditorShort}`"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.74.0",
+    "typescript": "^5.0.0"
+  }
+}
