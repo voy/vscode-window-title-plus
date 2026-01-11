@@ -1,8 +1,8 @@
 {
   "name": "vscode-worktree-window-title",
-  "displayName": "Worktree Window Title",
-  "description": "Show the git worktree folder name in your VS Code window title",
-  "version": "1.0.0",
+  "displayName": "Git Worktree Window Title",
+  "description": "Show the git worktree folder name or path in your VS Code window title",
+  "version": "1.0.2",
   "publisher": "garytyler",
   "repository": {
     "type": "git",
