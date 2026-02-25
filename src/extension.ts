@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 const log = (message: string) => output.appendLine(message);
 import { execSync } from "child_process";
-import { basename } from "path";
+import { basename, dirname } from "path";
 
 const prefix = "vscode-worktree-window-title:";
 const output = vscode.window.createOutputChannel("Worktree Window Title");
@@ -17,6 +17,25 @@ function getWorktreePath(workingDir: string): string | undefined {
   } catch (e) {
     log(`getWorktreePath: workingDir="${workingDir}" error="${e}"`);
     return undefined;
+  }
+}
+
+function isLinkedWorktree(workingDir: string): boolean {
+  try {
+    const gitDir = execSync("git rev-parse --git-dir", {
+      cwd: workingDir,
+      encoding: "utf8",
+    }).trim();
+    const commonDir = execSync("git rev-parse --git-common-dir", {
+      cwd: workingDir,
+      encoding: "utf8",
+    }).trim();
+    const result = gitDir !== commonDir;
+    log(`isLinkedWorktree: workingDir="${workingDir}" gitDir="${gitDir}" commonDir="${commonDir}" result=${result}`);
+    return result;
+  } catch (e) {
+    log(`isLinkedWorktree: workingDir="${workingDir}" error="${e}"`);
+    return false;
   }
 }
 
@@ -43,6 +62,12 @@ const keys = {
     const worktreeDir = getWorktreeDir();
     if (!worktreeDir) return undefined;
     return getWorktreePath(worktreeDir);
+  },
+  repositoryName: () => {
+    const worktreeDir = getWorktreeDir();
+    if (!worktreeDir || !isLinkedWorktree(worktreeDir)) return undefined;
+    const worktreePath = getWorktreePath(worktreeDir);
+    return worktreePath ? basename(dirname(worktreePath)) : undefined;
   },
 } as const satisfies Record<string, () => string | undefined>;
 

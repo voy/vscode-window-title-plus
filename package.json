@@ -2,7 +2,7 @@
   "name": "vscode-worktree-window-title",
   "displayName": "Git Worktree Window Title",
   "description": "Show the git worktree folder name or path in your VS Code window title",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "garytyler",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
         "worktreeTitle.template": {
           "type": "string",
           "default": "",
-          "markdownDescription": "Window title template. Use `${worktreeName}` for the worktree folder name. Standard VS Code variables like `${dirty}`, `${activeEditorShort}`, `${separator}` also work. **This replaces `window.title` when set.**\n\nExample: `${worktreeName}${separator}${dirty}${activeEditorShort}`"
+          "markdownDescription": "Window title template. Use `${worktreeName}` for the worktree folder name, `${repositoryName}` for the parent repository folder name. Standard VS Code variables like `${dirty}`, `${activeEditorShort}`, `${separator}` also work. **This replaces `window.title` when set.**\n\nExample: `${activeEditorShort}${separator}${repositoryName}${separator}${worktreeName}`"
         }
       }
     }
