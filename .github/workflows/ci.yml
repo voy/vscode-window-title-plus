@@ -33,4 +33,3 @@ jobs:
         with:
           name: window-title-plus-${{ env.VERSION }}-${{ env.SHORT_SHA }}
           path: window-title-plus-${{ env.VERSION }}.vsix
-
