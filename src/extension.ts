@@ -31,7 +31,9 @@ function isLinkedWorktree(workingDir: string): boolean {
       encoding: "utf8",
     }).trim();
     const result = gitDir !== commonDir;
-    log(`isLinkedWorktree: workingDir="${workingDir}" gitDir="${gitDir}" commonDir="${commonDir}" result=${result}`);
+    log(
+      `isLinkedWorktree: workingDir="${workingDir}" gitDir="${gitDir}" commonDir="${commonDir}" result=${result}`
+    );
     return result;
   } catch (e) {
     log(`isLinkedWorktree: workingDir="${workingDir}" error="${e}"`);
