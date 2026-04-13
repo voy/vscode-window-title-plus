@@ -1,12 +1,18 @@
 {
-  "name": "vscode-worktree-window-title",
-  "displayName": "Git Worktree Window Title",
-  "description": "Show the git worktree folder name or path in your VS Code window title",
+  "name": "window-title-plus",
+  "displayName": "Window Title Plus",
+  "description": "Extra window title variables for git worktree workflows",
   "version": "1.0.4",
-  "publisher": "garytyler",
+  "publisher": "voy",
+  "contributors": [
+    {
+      "name": "Gary Tyler",
+      "url": "https://github.com/garytyler"
+    }
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/garytyler/vscode-worktree-window-title"
+    "url": "https://github.com/voy/vscode-window-title-plus"
   },
   "license": "MIT",
   "icon": "assets/icon.png",

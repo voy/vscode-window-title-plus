@@ -1,6 +1,8 @@
-# Git Worktree Window Title
+# Window Title Plus
 
-A VS Code extension to show the current git worktree in the window title. Useful when working with multiple worktrees of the same repository.
+A VS Code and Cursor extension that adds extra window title variables for git worktree workflows.
+
+> Based on [vscode-worktree-window-title](https://github.com/garytyler/vscode-worktree-window-title) by [@garytyler](https://github.com/garytyler).
 
 ## Variables
 
@@ -41,8 +43,8 @@ server.py — my-project — feature-auth
 
 ## Installation
 
-1. Install from the VS Code Marketplace (search for "Git Worktree Window Title")
-2. Or install the `.vsix` file directly: `code --install-extension vscode-worktree-window-title-1.0.4.vsix`
+1. Install from the VS Code Marketplace (search for "Window Title Plus")
+2. Or install the `.vsix` file directly: `code --install-extension window-title-plus-1.0.4.vsix`
 
 ## How It Works
 
