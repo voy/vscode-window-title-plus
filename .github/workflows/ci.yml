@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run format:check
+
+      - run: npm run lint
+
+      - run: npm run compile
+
+      - run: npx @vscode/vsce package
+
+      - run: echo "SHORT_SHA=${GITHUB_SHA::6}" >> $GITHUB_ENV
+
+      - run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: window-title-plus-${{ env.VERSION }}-${{ env.SHORT_SHA }}
+          path: window-title-plus-${{ env.VERSION }}.vsix
