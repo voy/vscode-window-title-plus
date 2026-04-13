@@ -23,7 +23,7 @@ jobs:
 
       - run: npm run compile
 
-      - run: npx @vscode/vsce package
+      - run: npm run package
 
       - run: echo "SHORT_SHA=${GITHUB_SHA::6}" >> $GITHUB_ENV
 
