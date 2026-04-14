@@ -2,7 +2,7 @@
   "name": "window-title-plus",
   "displayName": "Window Title Plus",
   "description": "Extra window title variables for git worktree workflows",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "publisher": "voy",
   "contributors": [
     {
