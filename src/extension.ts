@@ -20,6 +20,21 @@ function getWorktreePath(workingDir: string): string | undefined {
   }
 }
 
+function getMainRepoPath(workingDir: string): string | undefined {
+  try {
+    const commonDir = execSync("git rev-parse --git-common-dir", {
+      cwd: workingDir,
+      encoding: "utf8",
+    }).trim();
+    const result = dirname(commonDir);
+    log(`getMainRepoPath: workingDir="${workingDir}" result="${result}"`);
+    return result;
+  } catch (e) {
+    log(`getMainRepoPath: workingDir="${workingDir}" error="${e}"`);
+    return undefined;
+  }
+}
+
 function isLinkedWorktree(workingDir: string): boolean {
   try {
     const gitDir = execSync("git rev-parse --git-dir", {
@@ -68,8 +83,8 @@ const keys = {
   repositoryName: () => {
     const worktreeDir = getWorktreeDir();
     if (!worktreeDir || !isLinkedWorktree(worktreeDir)) return undefined;
-    const worktreePath = getWorktreePath(worktreeDir);
-    return worktreePath ? basename(dirname(worktreePath)) : undefined;
+    const mainRepoPath = getMainRepoPath(worktreeDir);
+    return mainRepoPath ? basename(mainRepoPath) : undefined;
   },
 } as const satisfies Record<string, () => string | undefined>;
 

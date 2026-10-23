@@ -6,11 +6,11 @@ A VS Code and Cursor extension that adds extra window title variables for git wo
 
 ## Variables
 
-| Variable            | Description                                                             | Example                                       |
-| ------------------- | ----------------------------------------------------------------------- | --------------------------------------------- |
-| `${worktreeName}`   | The folder name of the git worktree                                     | `feature-auth`                                |
-| `${repositoryName}` | The parent folder name (repository). Only set inside a linked worktree. | `my-project`                                  |
-| `${worktreePath}`   | The full path to the git worktree                                       | `/Users/you/projects/my-project/feature-auth` |
+| Variable            | Description                                                            | Example                                       |
+| ------------------- | ---------------------------------------------------------------------- | --------------------------------------------- |
+| `${worktreeName}`   | The folder name of the git worktree                                    | `feature-auth`                                |
+| `${repositoryName}` | Name of the main repository folder. Only set inside a linked worktree. | `my-project`                                  |
+| `${worktreePath}`   | The full path to the git worktree                                      | `/Users/you/projects/my-project/feature-auth` |
 
 ## Usage
 
